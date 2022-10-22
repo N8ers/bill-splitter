@@ -5,3 +5,4 @@ A quick way to split expenses based on income. Pay your porportional percent of 
 ### Running locally
 
 `npm start`
+# bill-splitter
