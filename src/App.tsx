@@ -2,25 +2,32 @@ import React, { useState, useEffect } from "react"
 
 import { TextField, Divider } from "@mui/material"
 
+import { IncomeField } from "./components/IncomeField/IncomeField"
+
 import "./App.css"
 
 function App() {
-  const [total, setTotal] = useState("")
+  const [total, setTotal] = useState(0)
 
-  const [incomeOne, setIncomeOne] = useState("")
-  const [incomeTwo, setIncomeTwo] = useState("")
+  // maybe make it a dynamic number of participants?
+  // const participants = useState([])
 
-  const [incomePercentOne, setIncomePercentOne] = useState(0)
-  const [incomePercentTwo, setIncomePercentTwo] = useState(0)
+  const [incomeOne, setIncomeOne] = useState(0)
+  const [incomeTwo, setIncomeTwo] = useState(0)
+
+  const [incomeOnePercentShare, setIncomeOnePercentShare] = useState(0)
+  const [incomeTwoPercentShare, setIncomeTwoPercentShare] = useState(0)
 
   useEffect(() => {
-    const totalIncome = Number(incomeOne) + Number(incomeTwo)
-    const personOnePercent = parseInt(incomeOne) / Number(totalIncome)
-    const personTwoPercent = 1 - personOnePercent
-
-    setIncomePercentOne(personOnePercent)
-    setIncomePercentTwo(personTwoPercent)
-  }, [total, incomeOne, incomeTwo])
+    const totalIncome = incomeOne + incomeTwo
+    if (totalIncome && total) {
+      setIncomeOnePercentShare(incomeOne / totalIncome)
+      setIncomeTwoPercentShare(incomeTwo / totalIncome)
+    } else {
+      setIncomeOnePercentShare(0)
+      setIncomeTwoPercentShare(0)
+    }
+  }, [incomeOne, incomeTwo])
 
   return (
     <div className="App">
@@ -31,45 +38,28 @@ function App() {
         <TextField
           label="Total Bill"
           variant="standard"
-          onChange={(e) => setTotal(e.target.value)}
+          type="number"
+          onChange={(e) => setTotal(parseInt(e.target.value))}
         />
       </div>
 
       <Divider />
 
-      <div>
-        <h3>Person 1 Income: {incomeOne}</h3>
-        <TextField
-          label="Person 1 Income"
-          variant="standard"
-          onChange={(e) => setIncomeOne(e.target.value)}
-        />
-        <div>
-          <div>Percent of income: {(incomePercentOne * 100).toFixed(1)}%</div>
-          <div>
-            Total to contribute: $
-            {(Number(total) * incomePercentOne).toFixed(2)}
-          </div>
-        </div>
-      </div>
+      <IncomeField
+        total={total}
+        income={incomeOne}
+        percentShare={incomeOnePercentShare}
+        personIndex={1}
+        handleChange={(event) => setIncomeOne(parseInt(event.target.value))}
+      />
 
-      <Divider />
-
-      <div>
-        <h3>Person 2 Income: {incomeTwo}</h3>
-        <TextField
-          label="Person 2 Income"
-          variant="standard"
-          onChange={(e) => setIncomeTwo(e.target.value)}
-        />
-        <div>
-          <div>Percent of income: {(incomePercentTwo * 100).toFixed(1)}%</div>
-          <div>
-            Total to contribute: $
-            {(Number(total) * incomePercentTwo).toFixed(2)}
-          </div>
-        </div>
-      </div>
+      <IncomeField
+        total={total}
+        income={incomeTwo}
+        percentShare={incomeTwoPercentShare}
+        personIndex={2}
+        handleChange={(event) => setIncomeTwo(parseInt(event.target.value))}
+      />
     </div>
   )
 }
