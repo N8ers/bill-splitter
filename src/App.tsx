@@ -47,18 +47,16 @@ function App() {
 
       <IncomeField
         total={total}
-        income={incomeOne}
         percentShare={incomeOnePercentShare}
         personIndex={1}
-        handleChange={(event) => setIncomeOne(parseInt(event.target.value))}
+        handleChange={(income) => setIncomeOne(parseInt(income))}
       />
 
       <IncomeField
         total={total}
-        income={incomeTwo}
         percentShare={incomeTwoPercentShare}
         personIndex={2}
-        handleChange={(event) => setIncomeTwo(parseInt(event.target.value))}
+        handleChange={(income) => setIncomeTwo(parseInt(income))}
       />
     </div>
   )

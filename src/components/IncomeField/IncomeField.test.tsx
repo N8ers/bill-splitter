@@ -8,7 +8,6 @@ test("renders header text", () => {
       total={100}
       percentShare={10}
       personIndex={1}
-      income={40000}
       handleChange={() => null}
     />
   )
