@@ -4,6 +4,8 @@ import { TextField, Divider } from "@mui/material"
 
 import { IncomeField } from "./components/IncomeField/IncomeField"
 
+import BasicGrid from "./components/BasicGrid/BasicGrid"
+
 import "./App.css"
 
 function App() {
@@ -31,6 +33,12 @@ function App() {
 
   return (
     <div className="App">
+      <BasicGrid />
+
+      <Divider />
+      <Divider />
+      <Divider />
+
       <h4>Split your bill</h4>
 
       <div>
