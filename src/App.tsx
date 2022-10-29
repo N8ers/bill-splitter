@@ -84,6 +84,7 @@ function App() {
             personIndex={2}
             handleChange={(income) => setIncomeTwo(parseInt(income))}
           />
+          <button onClick={() => setShowOG(false)}>hide</button>
         </div>
       )}
     </div>
