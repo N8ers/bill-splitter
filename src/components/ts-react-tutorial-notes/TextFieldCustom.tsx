@@ -42,9 +42,8 @@ export const TextFieldCustom: React.FC<Props> = ({ handleChange }) => {
 
   return (
     <div>
-      <div>
-        {count} | {myObj}
-      </div>
+      <div> {count}</div>
+      <div> {myObj.text}</div>
       <input ref={inputRef} onChange={handleChange} />
     </div>
   )
