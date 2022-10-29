@@ -3,16 +3,9 @@ import Box from "@mui/material/Box"
 import Grid from "@mui/material/Unstable_Grid2"
 import { TextField, Button } from "@mui/material"
 
-import styles from "./BasicGrid.module.css"
+import styles from "./BasicGrid2.module.css"
 
-export default function BasicGrid() {
-  const Header = (
-    <div className={styles.header}>
-      <h1>Bill Splitter</h1>
-      <p>Split your expense by income.</p>
-    </div>
-  )
-
+export default function BasicGrid2() {
   const Total = (
     <div className={styles.total}>
       <div>Split Your Bill</div>
@@ -22,35 +15,33 @@ export default function BasicGrid() {
   )
 
   const ChildGrid = (
-    <Grid container spacing={0}>
-      <Grid xs={2}>
+    <Grid container spacing={0} className={styles.income}>
+      <Grid xs={3}>
         <div>Income 1</div>
       </Grid>
-      <Grid xs={4}>
+      <Grid xs={1}>{/* this is a dead cell */}</Grid>
+      <Grid xs={8}>
         <div>Share: $0.00</div>
         <div>Percent: 0.0%</div>
       </Grid>
-      <Grid xs={4}>
+      <Grid xs={6}>
         <TextField label="income" variant="standard" />
+      </Grid>
+      <Grid xs={6}>
+        <Button>Expense!</Button>
       </Grid>
     </Grid>
   )
 
   return (
     <div>
-      {Header}
-
       <Box sx={{ flexGrow: 1 }} className={styles.container}>
+        <Grid xs={4}>{Total}</Grid>
+        <br />
         <Grid container spacing={2}>
-          <Grid xs={4}>{Total}</Grid>
-
-          <Grid xs={8}>
-            <div className={styles.income}>{ChildGrid}</div>
-            <div className={styles.income}>{ChildGrid}</div>
-          </Grid>
+          <Grid xs={6}>{ChildGrid}</Grid>
+          <Grid xs={6}>{ChildGrid}</Grid>
         </Grid>
-
-        <Button>Expense!</Button>
       </Box>
     </div>
   )
