@@ -4,6 +4,6 @@ import App from "./App"
 
 test("renders header text", () => {
   render(<App />)
-  const headerText = screen.getByText(/Split your bill/i)
+  const headerText = screen.getByText(/Bill Splitter/i)
   expect(headerText).toBeInTheDocument()
 })
