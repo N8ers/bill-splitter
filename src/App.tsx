@@ -6,6 +6,7 @@ import { IncomeField } from "./components/IncomeField/IncomeField"
 
 import BasicGrid from "./components/BasicGrid/BasicGrid"
 import BasicGrid2 from "./components/BasicGrid2/BasicGrid2"
+import BasicGrid3 from "./components/BasicGrid3/BasicGrid3"
 
 import "./App.css"
 
@@ -43,6 +44,12 @@ function App() {
       <Divider />
 
       <BasicGrid2 />
+
+      <Divider />
+      <Divider />
+      <Divider />
+
+      <BasicGrid3 />
 
       <Divider />
       <Divider />
