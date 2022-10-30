@@ -13,9 +13,6 @@ import "./App.css"
 function App() {
   const [total, setTotal] = useState(0)
 
-  // maybe make it a dynamic number of participants?
-  // const participants = useState([])
-
   const [incomeOne, setIncomeOne] = useState(0)
   const [incomeTwo, setIncomeTwo] = useState(0)
 
@@ -70,7 +67,7 @@ function App() {
               <IncomeField
                 total={total}
                 percentShare={incomeTwoPercentShare}
-                personIndex={1}
+                personIndex={2}
                 handleChange={(income) => setIncomeTwo(parseInt(income))}
               />
             </Card>

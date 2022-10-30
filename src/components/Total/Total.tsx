@@ -13,13 +13,13 @@ export const Total: React.FC<Props> = ({ total, handleChange }) => {
   return (
     <div>
       <div className={styles.totalHeader}>Split Your Bill</div>
+      <h4>Total: ${total}</h4>
       <TextField
         label="Total Bill"
         variant="standard"
         type="number"
         onChange={handleChange}
       />
-      <h4>Total: ${total}</h4>
     </div>
   )
 }
