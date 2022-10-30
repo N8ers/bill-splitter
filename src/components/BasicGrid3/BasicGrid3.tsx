@@ -6,13 +6,6 @@ import { TextField, Button } from "@mui/material"
 import styles from "./BasicGrid3.module.css"
 
 export default function BasicGrid3() {
-  const Header = (
-    <div className={styles.header}>
-      <h1>Bill Splitter</h1>
-      <p>Split your expense by income.</p>
-    </div>
-  )
-
   const Total = (
     <div className={styles.total}>
       <div>Split Your Bill</div>
@@ -36,8 +29,6 @@ export default function BasicGrid3() {
 
   return (
     <div>
-      {Header}
-
       <Box sx={{ flexGrow: 1 }} className={styles.container}>
         <Grid container spacing={2}>
           <Grid xs={4}>{Total}</Grid>

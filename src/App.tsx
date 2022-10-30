@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react"
 
-import { TextField, Divider } from "@mui/material"
+import { Divider, Grid } from "@mui/material"
 
 import { IncomeField } from "./components/IncomeField/IncomeField"
 import BasicGrid3 from "./components/BasicGrid3/BasicGrid3"
 import { Card } from "./components/Card/Card"
+import { Total } from "./components/Total/Total"
+import Header from "./components/Header/Header"
 
 import "./App.css"
 
@@ -33,40 +35,44 @@ function App() {
 
   return (
     <div className="App">
-      <Card>
-        <div>hi :P</div>
-      </Card>
+      <Header />
 
       <BasicGrid3 />
 
-      <div>
-        <h4>Split your bill</h4>
+      <Divider />
 
-        <div>
-          <h3>Total: {total}</h3>
-          <TextField
-            label="Total Bill"
-            variant="standard"
-            type="number"
-            onChange={(e) => setTotal(parseInt(e.target.value))}
-          />
-        </div>
+      <h4>Split your bill</h4>
 
-        <Divider />
+      <div className="container">
+        <Grid container spacing={2}>
+          <Grid item={true} xs={4}>
+            <Card>
+              <Total handleChange={(e) => setTotal(parseInt(e.target.value))} />
+            </Card>
+          </Grid>
 
-        <IncomeField
-          total={total}
-          percentShare={incomeOnePercentShare}
-          personIndex={1}
-          handleChange={(income) => setIncomeOne(parseInt(income))}
-        />
+          <Grid item={true} xs={4}>
+            <Card>
+              <IncomeField
+                total={total}
+                percentShare={incomeOnePercentShare}
+                personIndex={1}
+                handleChange={(income) => setIncomeOne(parseInt(income))}
+              />
+            </Card>
+          </Grid>
 
-        <IncomeField
-          total={total}
-          percentShare={incomeTwoPercentShare}
-          personIndex={2}
-          handleChange={(income) => setIncomeTwo(parseInt(income))}
-        />
+          <Grid item={true} xs={4}>
+            <Card>
+              <IncomeField
+                total={total}
+                percentShare={incomeTwoPercentShare}
+                personIndex={1}
+                handleChange={(income) => setIncomeTwo(parseInt(income))}
+              />
+            </Card>
+          </Grid>
+        </Grid>
       </div>
     </div>
   )
