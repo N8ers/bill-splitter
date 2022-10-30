@@ -4,8 +4,8 @@ import { TextField, Divider } from "@mui/material"
 
 import { IncomeField } from "./components/IncomeField/IncomeField"
 
-import BasicGrid from "./components/BasicGrid/BasicGrid"
-import BasicGrid2 from "./components/BasicGrid2/BasicGrid2"
+// import BasicGrid from "./components/BasicGrid/BasicGrid"
+// import BasicGrid2 from "./components/BasicGrid2/BasicGrid2"
 import BasicGrid3 from "./components/BasicGrid3/BasicGrid3"
 
 import "./App.css"
@@ -37,23 +37,23 @@ function App() {
 
   return (
     <div className="App">
-      <BasicGrid />
+      {/* <BasicGrid /> */}
 
+      {/* <Divider />
       <Divider />
-      <Divider />
-      <Divider />
+      <Divider /> */}
 
-      <BasicGrid2 />
+      {/* <BasicGrid2 /> */}
 
+      {/* <Divider />
       <Divider />
-      <Divider />
-      <Divider />
+      <Divider /> */}
 
       <BasicGrid3 />
 
+      {/* <Divider />
       <Divider />
-      <Divider />
-      <Divider />
+      <Divider /> */}
 
       {showOG && (
         <div>
