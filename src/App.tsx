@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react"
 import { Divider, Grid } from "@mui/material"
 
 import { IncomeField } from "./components/IncomeField/IncomeField"
-import BasicGrid3 from "./components/BasicGrid3/BasicGrid3"
 import { Card } from "./components/Card/Card"
 import { Total } from "./components/Total/Total"
 import Header from "./components/Header/Header"
@@ -33,8 +32,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-
-      <BasicGrid3 />
 
       <Divider />
 
