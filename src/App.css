@@ -1,5 +1,14 @@
+body {
+  background-color: rgb(238, 238, 233);
+}
+
 .App {
   text-align: center;
+}
+
+.container {
+  margin: 20px auto;
+  max-width: 800px;
 }
 
 .App-logo {
