@@ -35,11 +35,13 @@ export const IncomeField: React.FC<Props> = ({
         <Grid xs={6}>Percent: {(percentShare * 100).toFixed(1)}%</Grid>
       </Grid>
 
-      <TextField
-        label="income"
-        variant="standard"
-        onChange={(event) => setIncome(event.target.value)}
-      />
+      <div className={styles.inputField}>
+        <TextField
+          label="income"
+          variant="standard"
+          onChange={(event) => setIncome(event.target.value)}
+        />
+      </div>
     </div>
   )
 }
