@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react"
-import Grid from "@mui/material/Unstable_Grid2"
 
+import Grid from "@mui/material/Unstable_Grid2"
 import { TextField } from "@mui/material"
+
+import { DisplayNumber } from "../DisplayNumber/DisplayNumber"
 
 import styles from "./IncomeField.module.css"
 
@@ -25,15 +27,17 @@ export const IncomeField: React.FC<Props> = ({
   }, [income])
 
   return (
-    <div className={styles.card}>
-      <div>Person {personIndex}</div>
+    <div>
+      <div className={styles.incomeHeader}>Person {personIndex}</div>
 
-      <div>income: ${income}</div>
+      <DisplayNumber label="Income" number={parseInt(income)} />
 
-      <Grid container spacing={2}>
-        <Grid xs={6}>Share: ${(total * percentShare).toFixed(2)}</Grid>
-        <Grid xs={6}>Percent: {(percentShare * 100).toFixed(1)}%</Grid>
-      </Grid>
+      <div className={styles.shareAndPercent}>
+        <Grid container spacing={2}>
+          <Grid xs={6}>Share: ${(total * percentShare).toFixed(2)}</Grid>
+          <Grid xs={6}>Percent: {(percentShare * 100).toFixed(1)}%</Grid>
+        </Grid>
+      </div>
 
       <div className={styles.inputField}>
         <TextField

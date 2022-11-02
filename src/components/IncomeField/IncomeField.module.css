@@ -1,3 +1,11 @@
+.incomeHeader {
+  padding-bottom: 25px;
+}
+
+.shareAndPercent {
+  margin-top: 40px;
+}
+
 .inputField {
   position: absolute;
   width: 200px;
