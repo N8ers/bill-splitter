@@ -21,10 +21,19 @@ export const IncomeField: React.FC<Props> = ({
   handleChange,
 }) => {
   const [income, setIncome] = useState("")
+  const [share, setShare] = useState("")
 
   useEffect(() => {
     handleChange(income)
   }, [income])
+
+  useEffect(() => {
+    const newShareValue = (total * percentShare).toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })
+    setShare(newShareValue)
+  }, [total, percentShare])
 
   return (
     <div>
@@ -34,7 +43,7 @@ export const IncomeField: React.FC<Props> = ({
 
       <div className={styles.shareAndPercent}>
         <Grid container spacing={2}>
-          <Grid xs={6}>Share: ${(total * percentShare).toFixed(2)}</Grid>
+          <Grid xs={6}>Share: ${share}</Grid>
           <Grid xs={6}>Percent: {(percentShare * 100).toFixed(1)}%</Grid>
         </Grid>
       </div>
