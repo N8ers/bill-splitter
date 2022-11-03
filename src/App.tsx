@@ -29,6 +29,10 @@ function App() {
     }
   }, [incomeOne, incomeTwo])
 
+  const handleTotalChange = (e) => {
+    setTotal(parseInt(e.target.value))
+  }
+
   return (
     <div className="App">
       <Header />
@@ -41,10 +45,7 @@ function App() {
         <Grid container spacing={2}>
           <Grid item={true} xs={4}>
             <Card>
-              <Total
-                total={total}
-                handleChange={(e) => setTotal(parseInt(e.target.value))}
-              />
+              <Total total={total} handleChange={handleTotalChange} />
             </Card>
           </Grid>
 

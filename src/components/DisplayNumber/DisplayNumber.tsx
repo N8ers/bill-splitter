@@ -10,10 +10,12 @@ interface Props {
 export const DisplayNumber: React.FC<Props> = ({ number, label }) => {
   return (
     <div>
-      {/* This is where we will format the number to have a comma and dollar sign,
-      all the stuff nessessary to make it look nice */}
       <h4>
-        {label}: ${number}
+        {label}: $
+        {number.toLocaleString("en-US", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })}
       </h4>
     </div>
   )
