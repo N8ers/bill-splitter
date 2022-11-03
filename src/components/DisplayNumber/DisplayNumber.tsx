@@ -8,11 +8,13 @@ interface Props {
 }
 
 export const DisplayNumber: React.FC<Props> = ({ number, label }) => {
+  const value = number ? number : 0
+
   return (
     <div>
       <h4>
         {label}: $
-        {number.toLocaleString("en-US", {
+        {value.toLocaleString("en-US", {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
         })}
