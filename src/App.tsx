@@ -43,7 +43,9 @@ function App() {
             <Card>
               <Total
                 total={total}
-                handleChange={(e) => setTotal(parseInt(e.target.value))}
+                handleChange={(e) => {
+                  setTotal(parseInt(e.target.value))
+                }}
               />
             </Card>
           </Grid>
