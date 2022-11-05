@@ -39,13 +39,13 @@ function App() {
 
       <div className="container">
         <Grid container spacing={2}>
-          <Grid item={true} xs={4}>
+          <Grid item={true} xs={12} sm={12} md={4}>
             <Card>
               <Total handleChange={(newTotal) => setTotal(newTotal)} />
             </Card>
           </Grid>
 
-          <Grid item={true} xs={4}>
+          <Grid item={true} xs={12} sm={12} md={4}>
             <Card>
               <IncomeField
                 total={total}
@@ -56,7 +56,7 @@ function App() {
             </Card>
           </Grid>
 
-          <Grid item={true} xs={4}>
+          <Grid item={true} xs={12} sm={12} md={4}>
             <Card>
               <IncomeField
                 total={total}
