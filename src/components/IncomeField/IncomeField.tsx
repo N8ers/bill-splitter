@@ -22,10 +22,11 @@ export const IncomeField: React.FC<Props> = ({
 }) => {
   const [income, setIncome] = useState(0)
   const [displayIncome, setDisplayIncome] = useState("")
-
+  const [warning, setWarning] = useState("")
   const [share, setShare] = useState("")
 
   const handleInputChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    setWarning("")
     if (e.key === "Backspace") {
       const incomeArray = income.toString().split("")
       incomeArray.pop()
@@ -43,8 +44,13 @@ export const IncomeField: React.FC<Props> = ({
       }
 
       incomeArray.push(e.key)
-      const newIncome = incomeArray.join("")
-      setIncome(parseInt(newIncome))
+      const newIncome = parseInt(incomeArray.join(""))
+
+      if (newIncome >= 1000000) {
+        setWarning("no value over 1,000,000 allowed")
+      } else {
+        setIncome(newIncome)
+      }
     }
   }
 
@@ -83,6 +89,7 @@ export const IncomeField: React.FC<Props> = ({
           onKeyDown={handleInputChange}
         />
       </div>
+      <div className={styles.warning}>{warning}</div>
     </div>
   )
 }

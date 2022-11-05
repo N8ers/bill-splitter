@@ -13,8 +13,10 @@ interface Props {
 export const Total: React.FC<Props> = ({ handleChange }) => {
   const [total, setTotal] = useState(0)
   const [displayTotal, setDisplayTotal] = useState("")
+  const [warning, setWarning] = useState("")
 
   const handleInputChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    setWarning("")
     if (e.key === "Backspace") {
       const totalArray = total.toString().split("")
       totalArray.pop()
@@ -31,8 +33,13 @@ export const Total: React.FC<Props> = ({ handleChange }) => {
         totalArray.shift()
       }
       totalArray.push(e.key)
-      const newTotal = totalArray.join("")
-      setTotal(parseInt(newTotal))
+      const newTotal = parseInt(totalArray.join(""))
+
+      if (newTotal >= 1000000) {
+        setWarning("no value over 1,000,000 allowed")
+      } else {
+        setTotal(newTotal)
+      }
     }
   }
 
@@ -54,6 +61,7 @@ export const Total: React.FC<Props> = ({ handleChange }) => {
           onKeyDown={handleInputChange}
         />
       </div>
+      <div className={styles.warning}>{warning}</div>
     </div>
   )
 }
