@@ -30,32 +30,31 @@ export const IncomeField: React.FC<Props> = ({
   const [formattedInput, setFormattedInput] = useState("0")
   const handleFormattedInput = (e: any) => {
     if (e.key === "Backspace") {
-      // remove last character
       const incomeArray = tIncome.toString().split("")
       incomeArray.pop()
       const newIncome = incomeArray.join("")
 
       if (!newIncome.length) {
         setTIncome(0)
-        const newIncomeFormatted = tIncome.toLocaleString("en-US", {})
-        setFormattedInput(newIncomeFormatted)
       } else {
         setTIncome(parseInt(newIncome))
-        const newIncomeFormatted = tIncome.toLocaleString("en-US", {})
-        setFormattedInput(newIncomeFormatted)
       }
     } else if (e.key.match(/^[0-9]+$/)) {
       const incomeArray = tIncome.toString().split("")
+      if (incomeArray.length && incomeArray[0] === "0") {
+        incomeArray.shift()
+      }
+
       incomeArray.push(e.key)
       const newIncome = incomeArray.join("")
       setTIncome(parseInt(newIncome))
-      const newIncomeFormatted = tIncome.toLocaleString("en-US", {})
-      setFormattedInput(newIncomeFormatted)
-    } else {
-      // not a num - do nothing
-      console.log("NOT a NUM :(")
     }
   }
+
+  useEffect(() => {
+    const newIncomeFormatted = tIncome.toLocaleString("en-US", {})
+    setFormattedInput(newIncomeFormatted)
+  }, [tIncome])
 
   useEffect(() => {
     handleChange(income)
