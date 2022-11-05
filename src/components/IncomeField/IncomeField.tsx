@@ -31,7 +31,19 @@ export const IncomeField: React.FC<Props> = ({
   const handleFormattedInput = (e: any) => {
     if (e.key === "Backspace") {
       // remove last character
-      console.log("BACKSPACE")
+      const incomeArray = tIncome.toString().split("")
+      incomeArray.pop()
+      const newIncome = incomeArray.join("")
+
+      if (!newIncome.length) {
+        setTIncome(0)
+        const newIncomeFormatted = tIncome.toLocaleString("en-US", {})
+        setFormattedInput(newIncomeFormatted)
+      } else {
+        setTIncome(parseInt(newIncome))
+        const newIncomeFormatted = tIncome.toLocaleString("en-US", {})
+        setFormattedInput(newIncomeFormatted)
+      }
     } else if (e.key.match(/^[0-9]+$/)) {
       const incomeArray = tIncome.toString().split("")
       incomeArray.push(e.key)
