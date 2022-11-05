@@ -5,7 +5,7 @@
 .inputField {
   position: absolute;
   width: 200px;
-  bottom: 20px;
+  bottom: 25px;
   left: 20px;
 }
 
@@ -13,6 +13,6 @@
   color: red;
   font-size: 12px;
   position: absolute;
-  bottom: 3px;
+  bottom: 5px;
   left: 33px;
 }

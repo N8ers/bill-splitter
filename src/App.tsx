@@ -35,8 +35,6 @@ function App() {
 
       <Divider />
 
-      <h4>Split your bill</h4>
-
       <div className="container">
         <Grid container spacing={2}>
           <Grid item={true} xs={12} sm={12} md={4}>

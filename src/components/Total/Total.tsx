@@ -51,7 +51,7 @@ export const Total: React.FC<Props> = ({ handleChange }) => {
 
   return (
     <div>
-      <div className={styles.totalHeader}>Split Your Bill</div>
+      <div className={styles.totalHeader}>Bill Total</div>
       <DisplayNumber label="Total" number={total} />
       <div className={styles.inputField}>
         <TextField
