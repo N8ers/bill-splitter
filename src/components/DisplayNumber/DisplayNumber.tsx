@@ -1,7 +1,5 @@
 import React from "react"
 
-// import styles from "./DisplayNumber.module.css"
-
 interface Props {
   label: string
   number: number

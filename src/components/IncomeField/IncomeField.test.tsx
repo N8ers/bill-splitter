@@ -5,8 +5,8 @@ import { IncomeField } from "./IncomeField"
 test("renders header text", () => {
   render(
     <IncomeField
-      total={100}
       percentShare={10}
+      dollarShare={4}
       personIndex={1}
       handleChange={() => null}
     />

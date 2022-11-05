@@ -18,16 +18,28 @@ function App() {
   const [incomeOnePercentShare, setIncomeOnePercentShare] = useState(0)
   const [incomeTwoPercentShare, setIncomeTwoPercentShare] = useState(0)
 
+  const [incomeOneDollarShare, setIncomeOneDollarShare] = useState(0)
+  const [incomeTwoDollarShare, setIncomeTwoDollarShare] = useState(0)
+
   useEffect(() => {
     const totalIncome = incomeOne + incomeTwo
     if (totalIncome && total) {
-      setIncomeOnePercentShare(incomeOne / totalIncome)
-      setIncomeTwoPercentShare(incomeTwo / totalIncome)
+      const calculatedPersonOnePercentShare = incomeOne / totalIncome
+      const calculatedPersonTwoPercentShare = incomeTwo / totalIncome
+
+      setIncomeOnePercentShare(calculatedPersonOnePercentShare)
+      setIncomeTwoPercentShare(calculatedPersonTwoPercentShare)
+
+      const dollarShareOne = total * calculatedPersonOnePercentShare
+      const dollarShareTwo = total - dollarShareOne
+
+      setIncomeOneDollarShare(dollarShareOne)
+      setIncomeTwoDollarShare(dollarShareTwo)
     } else {
       setIncomeOnePercentShare(0)
       setIncomeTwoPercentShare(0)
     }
-  }, [incomeOne, incomeTwo])
+  }, [total, incomeOne, incomeTwo])
 
   return (
     <div className="App">
@@ -35,37 +47,30 @@ function App() {
 
       <Divider />
 
-      <h4>Split your bill</h4>
-
       <div className="container">
         <Grid container spacing={2}>
-          <Grid item={true} xs={4}>
+          <Grid item={true} xs={12} sm={12} md={4}>
             <Card>
-              <Total
-                total={total}
-                handleChange={(e) => {
-                  setTotal(parseInt(e.target.value))
-                }}
-              />
+              <Total handleChange={(newTotal) => setTotal(newTotal)} />
             </Card>
           </Grid>
 
-          <Grid item={true} xs={4}>
+          <Grid item={true} xs={12} sm={12} md={4}>
             <Card>
               <IncomeField
-                total={total}
                 percentShare={incomeOnePercentShare}
+                dollarShare={incomeOneDollarShare}
                 personIndex={1}
                 handleChange={(income) => setIncomeOne(parseInt(income))}
               />
             </Card>
           </Grid>
 
-          <Grid item={true} xs={4}>
+          <Grid item={true} xs={12} sm={12} md={4}>
             <Card>
               <IncomeField
-                total={total}
                 percentShare={incomeTwoPercentShare}
+                dollarShare={incomeTwoDollarShare}
                 personIndex={2}
                 handleChange={(income) => setIncomeTwo(parseInt(income))}
               />
