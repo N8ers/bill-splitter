@@ -25,6 +25,7 @@ export const IncomeField: React.FC<Props> = ({
 
   const [share, setShare] = useState("")
 
+  // CHANGE THIS NAME AND FIX THE e: any warning!
   const handleFormattedInput = (e: any) => {
     if (e.key === "Backspace") {
       const incomeArray = income.toString().split("")
@@ -51,9 +52,6 @@ export const IncomeField: React.FC<Props> = ({
   useEffect(() => {
     const newIncomeFormatted = income.toLocaleString("en-US", {})
     setDisplayIncome(newIncomeFormatted)
-  }, [income])
-
-  useEffect(() => {
     handleChange(income.toString())
   }, [income])
 

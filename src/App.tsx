@@ -41,12 +41,7 @@ function App() {
         <Grid container spacing={2}>
           <Grid item={true} xs={4}>
             <Card>
-              <Total
-                total={total}
-                handleChange={(e) => {
-                  setTotal(parseInt(e.target.value))
-                }}
-              />
+              <Total handleChange={(newTotal) => setTotal(newTotal)} />
             </Card>
           </Grid>
 
