@@ -64,19 +64,10 @@ export const IncomeField: React.FC<Props> = ({
     <div>
       <div className={styles.incomeHeader}>Person {personIndex}</div>
 
-      <DisplayNumber label="Income" number={income} />
+      <DisplayNumber label="Share" number={dollarShare} />
 
       <div className={styles.shareAndPercent}>
-        <Grid container spacing={2}>
-          <Grid xs={6}>
-            Share: $
-            {dollarShare.toLocaleString("en-US", {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            })}
-          </Grid>
-          <Grid xs={6}>Percent: {(percentShare * 100).toFixed(1)}%</Grid>
-        </Grid>
+        Percent: {(percentShare * 100).toFixed(1)}%
       </div>
 
       <div className={styles.inputField}>

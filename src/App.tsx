@@ -24,13 +24,13 @@ function App() {
   useEffect(() => {
     const totalIncome = incomeOne + incomeTwo
     if (totalIncome && total) {
-      setIncomeOnePercentShare(incomeOne / totalIncome)
-      setIncomeTwoPercentShare(incomeTwo / totalIncome)
+      const calculatedPersonOnePercentShare = incomeOne / totalIncome
+      const calculatedPersonTwoPercentShare = incomeTwo / totalIncome
 
-      const dollarShareOne = parseFloat(
-        (total * incomeOnePercentShare).toFixed(2)
-      )
+      setIncomeOnePercentShare(calculatedPersonOnePercentShare)
+      setIncomeTwoPercentShare(calculatedPersonTwoPercentShare)
 
+      const dollarShareOne = total * calculatedPersonOnePercentShare
       const dollarShareTwo = total - dollarShareOne
 
       setIncomeOneDollarShare(dollarShareOne)

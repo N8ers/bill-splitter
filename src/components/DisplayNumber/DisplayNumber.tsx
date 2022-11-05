@@ -11,7 +11,11 @@ export const DisplayNumber: React.FC<Props> = ({ number, label }) => {
   return (
     <div>
       <h4>
-        {label}: ${value.toLocaleString("en-US", {})}
+        {label}: $
+        {value.toLocaleString("en-US", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })}
       </h4>
     </div>
   )
