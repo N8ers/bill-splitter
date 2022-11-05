@@ -20,44 +20,41 @@ export const IncomeField: React.FC<Props> = ({
   personIndex,
   handleChange,
 }) => {
-  // const [income, setIncome] = useState(0)
-  // const [displayIncome, setDisplayIncome] = useState("")
+  const [income, setIncome] = useState(0)
+  const [displayIncome, setDisplayIncome] = useState("")
 
-  const [income, setIncome] = useState("")
   const [share, setShare] = useState("")
 
-  const [tIncome, setTIncome] = useState(0)
-  const [formattedInput, setFormattedInput] = useState("0")
   const handleFormattedInput = (e: any) => {
     if (e.key === "Backspace") {
-      const incomeArray = tIncome.toString().split("")
+      const incomeArray = income.toString().split("")
       incomeArray.pop()
       const newIncome = incomeArray.join("")
 
       if (!newIncome.length) {
-        setTIncome(0)
+        setIncome(0)
       } else {
-        setTIncome(parseInt(newIncome))
+        setIncome(parseInt(newIncome))
       }
     } else if (e.key.match(/^[0-9]+$/)) {
-      const incomeArray = tIncome.toString().split("")
+      const incomeArray = income.toString().split("")
       if (incomeArray.length && incomeArray[0] === "0") {
         incomeArray.shift()
       }
 
       incomeArray.push(e.key)
       const newIncome = incomeArray.join("")
-      setTIncome(parseInt(newIncome))
+      setIncome(parseInt(newIncome))
     }
   }
 
   useEffect(() => {
-    const newIncomeFormatted = tIncome.toLocaleString("en-US", {})
-    setFormattedInput(newIncomeFormatted)
-  }, [tIncome])
+    const newIncomeFormatted = income.toLocaleString("en-US", {})
+    setDisplayIncome(newIncomeFormatted)
+  }, [income])
 
   useEffect(() => {
-    handleChange(income)
+    handleChange(income.toString())
   }, [income])
 
   useEffect(() => {
@@ -72,7 +69,7 @@ export const IncomeField: React.FC<Props> = ({
     <div>
       <div className={styles.incomeHeader}>Person {personIndex}</div>
 
-      <DisplayNumber label="Income" number={parseInt(income)} />
+      <DisplayNumber label="Income" number={income} />
 
       <div className={styles.shareAndPercent}>
         <Grid container spacing={2}>
@@ -81,20 +78,12 @@ export const IncomeField: React.FC<Props> = ({
         </Grid>
       </div>
 
-      <div>
-        <TextField
-          label="income"
-          value={formattedInput}
-          variant="standard"
-          onKeyDown={handleFormattedInput}
-        />
-      </div>
-
       <div className={styles.inputField}>
         <TextField
           label="income"
+          value={displayIncome}
           variant="standard"
-          onChange={(event) => setIncome(event.target.value)}
+          onKeyDown={handleFormattedInput}
         />
       </div>
     </div>
