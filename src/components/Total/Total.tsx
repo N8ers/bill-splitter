@@ -36,7 +36,7 @@ export const Total: React.FC<Props> = ({ handleChange }) => {
       const newTotal = parseInt(totalArray.join(""))
 
       if (newTotal >= 1000000) {
-        setWarning("no value over 1,000,000 allowed")
+        setWarning("value must be under 1,000,000")
       } else {
         setTotal(newTotal)
       }

@@ -47,7 +47,7 @@ export const IncomeField: React.FC<Props> = ({
       const newIncome = parseInt(incomeArray.join(""))
 
       if (newIncome >= 1000000) {
-        setWarning("no value over 1,000,000 allowed")
+        setWarning("value must be under 1,000,000")
       } else {
         setIncome(newIncome)
       }
