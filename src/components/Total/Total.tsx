@@ -14,8 +14,7 @@ export const Total: React.FC<Props> = ({ handleChange }) => {
   const [total, setTotal] = useState(0)
   const [displayTotal, setDisplayTotal] = useState("")
 
-  // CHANGE THIS NAME AND FIX THE e: any warning!
-  const handleFormattedInput = (e: any) => {
+  const handleInputChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Backspace") {
       const totalArray = total.toString().split("")
       totalArray.pop()
@@ -31,7 +30,6 @@ export const Total: React.FC<Props> = ({ handleChange }) => {
       if (totalArray.length && totalArray[0] === "0") {
         totalArray.shift()
       }
-
       totalArray.push(e.key)
       const newTotal = totalArray.join("")
       setTotal(parseInt(newTotal))
@@ -53,7 +51,7 @@ export const Total: React.FC<Props> = ({ handleChange }) => {
           value={displayTotal}
           label="Total Bill"
           variant="standard"
-          onKeyDown={handleFormattedInput}
+          onKeyDown={handleInputChange}
         />
       </div>
     </div>

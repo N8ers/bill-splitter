@@ -27,7 +27,7 @@ function App() {
       setIncomeOnePercentShare(0)
       setIncomeTwoPercentShare(0)
     }
-  }, [incomeOne, incomeTwo])
+  }, [total, incomeOne, incomeTwo])
 
   return (
     <div className="App">

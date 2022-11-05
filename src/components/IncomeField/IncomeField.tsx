@@ -25,8 +25,7 @@ export const IncomeField: React.FC<Props> = ({
 
   const [share, setShare] = useState("")
 
-  // CHANGE THIS NAME AND FIX THE e: any warning!
-  const handleFormattedInput = (e: any) => {
+  const handleInputChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Backspace") {
       const incomeArray = income.toString().split("")
       incomeArray.pop()
@@ -81,7 +80,7 @@ export const IncomeField: React.FC<Props> = ({
           label="income"
           value={displayIncome}
           variant="standard"
-          onKeyDown={handleFormattedInput}
+          onKeyDown={handleInputChange}
         />
       </div>
     </div>
