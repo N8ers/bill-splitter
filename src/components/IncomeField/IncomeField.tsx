@@ -20,8 +20,30 @@ export const IncomeField: React.FC<Props> = ({
   personIndex,
   handleChange,
 }) => {
+  // const [income, setIncome] = useState(0)
+  // const [displayIncome, setDisplayIncome] = useState("")
+
   const [income, setIncome] = useState("")
   const [share, setShare] = useState("")
+
+  const [tIncome, setTIncome] = useState(0)
+  const [formattedInput, setFormattedInput] = useState("0")
+  const handleFormattedInput = (e: any) => {
+    if (e.key === "Backspace") {
+      // remove last character
+      console.log("BACKSPACE")
+    } else if (e.key.match(/^[0-9]+$/)) {
+      const incomeArray = tIncome.toString().split("")
+      incomeArray.push(e.key)
+      const newIncome = incomeArray.join("")
+      setTIncome(parseInt(newIncome))
+      const newIncomeFormatted = tIncome.toLocaleString("en-US", {})
+      setFormattedInput(newIncomeFormatted)
+    } else {
+      // not a num - do nothing
+      console.log("NOT a NUM :(")
+    }
+  }
 
   useEffect(() => {
     handleChange(income)
@@ -46,6 +68,15 @@ export const IncomeField: React.FC<Props> = ({
           <Grid xs={6}>Share: ${share}</Grid>
           <Grid xs={6}>Percent: {(percentShare * 100).toFixed(1)}%</Grid>
         </Grid>
+      </div>
+
+      <div>
+        <TextField
+          label="income"
+          value={formattedInput}
+          variant="standard"
+          onKeyDown={handleFormattedInput}
+        />
       </div>
 
       <div className={styles.inputField}>
